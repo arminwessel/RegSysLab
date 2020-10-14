@@ -3,17 +3,27 @@ function [u,t] = PRBS(U,Pp,Ta)
 %Uberabtastung Pp>=1
 if Pp < 1
     Pp=1
+end
     
-N=(2^10-1)*Pp;
+n=(2^10-1); %2^(Op)-1
 
-p=[0,0,0,0,0,0,0,0,0,1];
+p=[0,0,0,0,0,0,0,0,0,1]; % Startwert nach Angabe
 
-for i=1:N
-    pk = mod(1*p(7-1+i)+1*p(10-1+i),2)
-    p=[p, pk]
+for i=10+1:n %Op+1
+    pk = mod(1*p(i-7)+1*p(i-10),2);
+    p=[p, pk]; % Anhängen
 end
 
-p = p(10:N)
-t=Ta*N
+u = 2* U * p; %Aufskalieren auf Amplitude
+
+% Überabtastung:
+u = repelem(u,Pp); % Jedes Element Pp mal wiederholen
+
+% Mittelwert abziehen
+U0 = mean(u);
+u = u- U0;
+
+% Vektor der Zeitwerte, Transponiert
+t = ((0:n*Pp-1).*Ta)';
 end
 

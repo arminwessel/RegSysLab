@@ -1,7 +1,7 @@
 function [u,t] = chripsig(U, w_s, w_e, N, Ta)
 
 
-k=0:1:(N-1)
+k=0:1:(N-1);
 
 rk= U * sat (10*k/N) .* sat(10*(N-k)/N);
 
@@ -11,7 +11,7 @@ U0 = mean(uk);
 
 u=uk+U0;
 
-t=k.*Ta
+t=k.*Ta;
 
 end
 
