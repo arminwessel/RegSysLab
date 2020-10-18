@@ -16,7 +16,7 @@ parSim.Methode=0;
 parSim.xx0=[0,0];
 sim_time = Ta*(N-1); 
 
-%% Chrip simulation
+%% Chirp simulation
 
 parSim.u_in= u_ch;
 parSim.t_in= t_ch;
@@ -38,7 +38,7 @@ y_pr4_n = sim_mit_rauschen;
 y_pr4 = sim_kein_rauschen;
 
 
-%% FFT of chrip signal
+%% FFT of chirp signal
 y_ch_fft = fft(y_ch.signals.values,length(u_ch));
 y_ch_n_fft = fft(y_ch_n.signals.values,length(u_ch));
 
