@@ -74,7 +74,33 @@ hold on;
 semilogx(w_pr4, G_pr4_ampl(1:floor(length(u_pr4)/2)));
 hold on;
 semilogx(Sys_z_w, Sys_z_ampl);
+grid on;%% Plot ohne Rauschen
+
+figure(1)
+title('Ohne Rauschen');
+subplot(2,1,1)
+semilogx(w_ch, G_ch_ampl(1:floor(length(u_ch)/2)));
+hold on;
+semilogx(w_pr4, G_pr4_ampl(1:floor(length(u_pr4)/2)));
+hold on;
+semilogx(Sys_z_w, Sys_z_ampl);
 grid on;
+title('Amplitudengang ohne Rauschen');
+ylabel('Amplitude [dB]');
+xlabel('Frequenz [rad/s]');
+legend('Chirp-Signal', 'PRBS, Pp = 4','Modell','Location','northwest');
+
+subplot(2,1,2)
+semilogx(w_ch, G_ch_phase(1:floor(length(u_ch)/2)));
+hold on;
+semilogx(w_pr4, G_pr4_phase(1:floor(length(u_pr4)/2)));
+hold on;
+semilogx(Sys_z_w, Sys_z_phase);
+hold off;
+grid on;
+title('Frequenzgang ohne Rauschen');
+ylabel('Phase [°]');
+xlabel('Frequenz [rad/s]');
 title('Amplitudengang ohne Rauschen');
 ylabel('Amplitude [dB]');
 xlabel('Frequenz [rad/s]');

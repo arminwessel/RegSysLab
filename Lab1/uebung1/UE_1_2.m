@@ -12,10 +12,10 @@ we=20*pi;
 
 U=10;
 
-Ta=1/40 % -> 25ms 
+Ta=0.025;
 
 %Chrip-Signal
-[u_ch,t_ch] = chripsig(U,ws,we,N,Ta);
+[u_ch,t_ch] = chirpsig(U,ws,we,N,Ta);
 figure(1)
 stairs(t_ch,u_ch);
 grid on;

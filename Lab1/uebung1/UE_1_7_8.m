@@ -2,7 +2,7 @@
 
 %% parametrische Identifikation
 %
-%
+% ZVF = Zustandsvariablenfilter
 %
 % 1.7 und 1.8
 close all;
@@ -81,5 +81,4 @@ par_r.Pp=Pp
 % Filterzeitkonstante (Tf) liegt.
 % sim_time = 0.5 geht noch gut
 % sim_time = 0.1 fehlerhaft
-REK
 
