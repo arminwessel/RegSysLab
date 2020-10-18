@@ -1,10 +1,10 @@
 %% RegSys1 Ex1
 
-%%parametrische Identifikation
+%% parametrische Identifikation
 %
 %
 %
-%1.7
+% 1.7 und 1.8
 close all;
 
 %% Matrizen
@@ -81,5 +81,5 @@ par_r.Pp=Pp
 % Filterzeitkonstante (Tf) liegt.
 % sim_time = 0.5 geht noch gut
 % sim_time = 0.1 fehlerhaft
-
+REK
 

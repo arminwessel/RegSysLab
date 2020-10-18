@@ -1,6 +1,6 @@
 %%RegSys1 Ex1
 
-%%Nicht-parametrische Identifikation
+%% Nicht-parametrische Identifikation
 %%
 %1.1
 

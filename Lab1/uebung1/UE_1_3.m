@@ -1,6 +1,6 @@
 %%RegSys1 Ex1
 
-%%Nicht-parametrische Identifikation
+%% Nicht-parametrische Identifikation
 %
 %   IMPORTANT: REQUIRES "UE_1_1.m" and "UE_1_2.m" to be executed beforehand
 %
