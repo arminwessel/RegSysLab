@@ -29,7 +29,7 @@ y_ch = sim_kein_rauschen;
 %%PRBS (Pp=4) simulation
 
 parSim.u_in= u_pr4;
-parSim.t_in= t_pr4';
+parSim.t_in= t_pr4;
 
 
 sim('Einmassenschwinger', sim_time);

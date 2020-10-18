@@ -24,6 +24,6 @@ U0 = mean(u);
 u = u- U0;
 
 % Vektor der Zeitwerte, Transponiert
-t = ((0:n*Pp-1).*Ta)';
+t = ((0:n*Pp-1).*Ta);
 end
 
