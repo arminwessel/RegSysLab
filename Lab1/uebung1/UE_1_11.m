@@ -91,15 +91,15 @@ mu_quer = 0.02;
 sound(rk_est, data.sampling_rate_fs);
 pause(data.time(end));
 
-p=399;
-q=400;
-[rk_est, dk, time, sampling_rate_fs] = Noisecancel(p,q,mu_q,'Audio/data_1.mat');
-sound(rk_est, data.sampling_rate_fs);
-pause(data.time(end));
-
-p=10;
-[rk_est, dk, time, sampling_rate_fs] = Noisecancel(p,q,mu_q,'Audio/data_1.mat');
-sound(rk_est, data.sampling_rate_fs);
+% p=399;
+% q=400;
+% [rk_est, dk, time, sampling_rate_fs] = Noisecancel(p,q,mu_q,'Audio/data_1.mat');
+% sound(rk_est, data.sampling_rate_fs);
+% pause(data.time(end));
+% 
+% p=10;
+% [rk_est, dk, time, sampling_rate_fs] = Noisecancel(p,q,mu_q,'Audio/data_1.mat');
+% sound(rk_est, data.sampling_rate_fs);
 
 figure(3)
 plot(time', dk);
@@ -108,7 +108,7 @@ grid on;
 
 figure(4)
 plot(time', rk_est);
-title('Geschätztes periodisches Nutzsignal');
+title('Geschätztes Audiosignal');
 grid on;
 
 

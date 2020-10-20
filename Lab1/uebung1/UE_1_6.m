@@ -11,7 +11,7 @@ clear all;
 %% Simulationswerte
 
 Pp=4;
-sim_time = 20; 
+sim_time = 100; 
 
 U=10;
 Ta=1/40; % -> 25ms 
@@ -31,23 +31,25 @@ sim('Einmassenschwinger', sim_time);
 %% Least Square
 start=10;
 
-yk = sim_kein_rauschen.signals.values(start:end);
-yk1 = sim_kein_rauschen.signals.values(start-1:end-1);
-yk2 = sim_kein_rauschen.signals.values(start-2:end-2);
+% yk = sim_kein_rauschen.signals.values(start:end);
+% yk1 = sim_kein_rauschen.signals.values(start-1:end-1);
+% yk2 = sim_kein_rauschen.signals.values(start-2:end-2);
 
-% yk = sim_mit_rauschen.signals.values(start:end);
-% yk1 = sim_mit_rauschen.signals.values(start-1:end-1);
-% yk2 = sim_mit_rauschen.signals.values(start-2:end-2);
+yk = sim_mit_rauschen.signals.values(start:end);
+yk1 = sim_mit_rauschen.signals.values(start-1:end-1);
+yk2 = sim_mit_rauschen.signals.values(start-2:end-2);
 
 u = sim_eingang.signals.values;
 u_quer = u(start:end) + 2*u(start-1:end-1) + u(start-2:end-2);
 
 S = [-yk1, -yk2, u_quer];
-p_gesch = (S'*S)\S'*yk;
+p_gesch = (S'*S)\S'*yk; % Backslash Operator
 
+% Aus Maple
 par.m = (-1/16)*Ta^2*(p_gesch(1)-p_gesch(2)-1)/p_gesch(3);
 par.d = (-1/4)*Ta*(p_gesch(2)-1)/p_gesch(3);
 par.c = (1/4)*(p_gesch(1) + p_gesch(2) +1)/p_gesch(3);
+
 par.t = sim_time;
 par.Pp=Pp
 
@@ -63,3 +65,10 @@ par.Pp=Pp
 % Eine längere Simulationsdauer bewirkt ebenfalls mehr Messpunkte. Das
 % Rauschen wird dadurch rausgemittelt
 
+%% Punkt 1.6.4
+% Für eine längere Messdauer sinkt der Einfluss des Rauschens, denn der
+% Fehler wird über die vielen Messwerte ausgemittelt
+
+%% Punkt 1.6.5
+% Das Rauschen wirkt direkt auf den verallgemeinerten Gleichungsfehler e,
+% über dessen Minimierung die Least-Squares Methode funktioniert

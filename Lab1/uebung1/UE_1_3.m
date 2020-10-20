@@ -6,8 +6,10 @@
 %
 %1.3
 % ETFE (empirical transfer function estimate)
+clear all;
+UE_1_1;
+UE_1_2;
 close all;
-
 %% Simulationswerte
 
 parSim.T_a=Ta;
