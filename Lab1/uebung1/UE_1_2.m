@@ -6,6 +6,7 @@
 %1.2.1
 close all;
 
+%Parameter laut Angabe
 N=4096;
 ws=2*pi;
 we=20*pi;
@@ -46,13 +47,13 @@ ylabel('Amplitude U [V]');
 xlabel('Zeit t [ms]');
 axis padded;
 
-% Amplitudenspektren
-% FFT
+% Amplitudenspektren der Signale
+% FFT 
 u_ch_fft = fft(u_ch,length(u_ch));
 u_pr4_fft = fft(u_pr4,length(u_pr4));
 u_pr1_fft = fft(u_pr1,length(u_pr1));
 
-% Amplitude in dB und Phase in ° der Signale
+% Amplitude in dB und Phase in ° umwandeln
 u_ch_ampl = 20*log10(abs(u_ch_fft));
 u_ch_phase = unwrap(angle(u_ch_fft))*(180/pi);
 u_pr4_ampl = 20*log10(abs(u_pr4_fft));
@@ -60,7 +61,7 @@ u_pr4_phase = unwrap(angle(u_pr4_fft))*(180/pi);
 u_pr1_ampl = 20*log10(abs(u_pr1_fft));
 u_pr1_phase = unwrap(angle(u_pr1_fft))*(180/pi);
 
-% delta omega
+% delta omega berechnen
 dw_ch = 2*pi/(length(u_ch)*Ta);
 dw_pr4 = 2*pi/(length(u_pr4)*Ta);
 dw_pr1 = 2*pi/(length(u_pr1)*Ta);
@@ -74,7 +75,8 @@ w_pr4 = 0:dw_pr4:w_max-dw_pr4;
 w_pr1 = 0:dw_pr1:w_max-dw_pr1;
 
 
-% BODE plot
+% BODE plot der einelnen Signale
+% Amplitudengang
 figure(4)
 subplot(2,1,1)
 semilogx(w_ch, u_ch_ampl(1:floor(length(u_ch)/2)));
@@ -89,6 +91,7 @@ xlabel('Frequenz [rad/s]');
 
 legend('Chirp-Signal', 'PRBS, Pp = 1', 'PRBS, Pp = 4','Location','southwest');
 
+% Phasengang
 subplot(2,1,2)
 semilogx(w_ch, u_ch_phase(1:floor(length(u_ch)/2)));
 hold on;

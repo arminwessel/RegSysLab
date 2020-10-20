@@ -112,7 +112,7 @@ title('Geschätztes periodisches Nutzsignal');
 grid on;
 
 
-
+l
 
 %%
 %Rauschunterdruekung wird schlechter wenn der Parameter p in die Nähe der

@@ -12,16 +12,19 @@ c=100;
 
 numerator = 1;
 denominator = [m,d,c];
+
 %% continuierliches Modell
+
 Sys=tf(numerator,denominator);
 
 %% discretes Modell
-ts = 1/40; %25ms
+
+ts = 0.025;
 s=tf('s');
 Sys_z=c2d(Sys,ts,'zoh');
 bode(Sys);
 
-
+% Grenzfrequenz berechnen für d = 0
 syms w
 w0=solve(0.5*w^2==100,w);
 %w0=14.1421

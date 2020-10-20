@@ -20,7 +20,7 @@ G1 =  1 / (m*s^2+d*s+c);    %"unbekannt"
 G2 = 10/s^2;                 %bekannte Teil
 Sys_Gg=G1*G2;
 Sys_Gg_z = c2d(Sys_Gg,Ta,'zoh');
-
+Sys_z = c2d(G1,Ta,'zoh');
 %% Chirp 
 N=4096;
 ws=0.3*2*pi;
@@ -56,35 +56,18 @@ u_ch_fft = fft(u_ch,length(u_ch));
 y_ch_fft = fft(y_ch.signals.values,length(u_ch));
 y_ch_n_fft = fft(y_ch_n.signals.values,length(u_ch));
 
-G_ch_ampl = 20*log10(abs(y_ch_fft)./abs(u_ch_fft));
-G_ch_phase = unwrap(angle(y_ch_fft) - angle(u_ch_fft))*180/pi;
-G_ch_n_ampl = 20*log10(abs(y_ch_n_fft)./abs(u_ch_fft));
-G_ch_n_phase = unwrap(angle(y_ch_n_fft) - angle(u_ch_fft))*180/pi;
+G_ch_ampl = 20*log10(abs(y_ch_fft)./abs(u_ch_fft'));
+G_ch_phase = unwrap(angle(y_ch_fft) - angle(u_ch_fft'))*180/pi;
+G_ch_n_ampl = 20*log10(abs(y_ch_n_fft)./abs(u_ch_fft'));
+G_ch_n_phase = unwrap(angle(y_ch_n_fft) - angle(u_ch_fft'))*180/pi;
 
 
 %% Gz reference
-[Sys_Gg_z_mag,Sys_Gg_z_phase, Sys_Gg_z_w] = bode(Sys_Gg_z,{ws,we});
-Sys_Gg_z_ampl = 20*log10(squeeze(Sys_Gg_z_mag(1,1,:)));
-Sys_Gg_z_phase = squeeze(Sys_Gg_z_phase(1,1,:));
+[Sys_z_mag,Sys_z_phase, Sys_z_w] = bode(Sys_z,{ws,we});
+Sys_z_ampl = 20*log10(squeeze(Sys_z_mag(1,1,:)));
+Sys_z_phase = squeeze(Sys_z_phase(1,1,:));
 
 
-%% Plot ohne Rauschen
-
-% figure(1)
-% subplot(2,1,1)
-% semilogx(w_ch, G_ch_ampl(1:floor(length(u_ch)/2)));
-% grid on;
-% title('Amplitudengang ohne Rauschen');
-% ylabel('Amplitude [dB]');
-% xlabel('Frequenz [rad/s]');
-% %legend('Chirp-Signal','Modell','Location','northwest');
-% 
-% subplot(2,1,2)
-% semilogx(w_ch, G_ch_phase(1:floor(length(u_ch)/2)));
-% grid on;
-% title('Frequenzgang ohne Rauschen');
-% ylabel('Phase [°]');
-% xlabel('Frequenz [rad/s]');
 
 
 %% Vorfilter
@@ -119,7 +102,7 @@ semilogx(w_ch, G_ch_ampl(1:floor(length(u_ch)/2)));
 hold on;
 semilogx(w_ch, G_ch_ampl_v(1:floor(length(u_ch)/2)));
 hold on;
-semilogx(Sys_Gg_z_w, Sys_Gg_z_ampl);
+semilogx(Sys_z_w, Sys_z_ampl);
 grid on;
 title('Amplitudengang ohne Vorfilter, ohne Rauschen');
 ylabel('Amplitude [dB]');
@@ -131,7 +114,7 @@ semilogx(w_ch, G_ch_phase(1:floor(length(u_ch)/2)));
 hold on;
 semilogx(w_ch, G_ch_phase_v(1:floor(length(u_ch)/2)));
 hold on;
-semilogx(Sys_Gg_z_w, Sys_Gg_z_phase);
+semilogx(Sys_z_w, Sys_z_phase);
 hold off;
 grid on;
 title('Frequenzgang ohne Vorfilter, ohne Rauschen');
@@ -147,7 +130,7 @@ semilogx(w_ch, G_ch_n_ampl(1:floor(length(u_ch)/2)));
 hold on;
 semilogx(w_ch, G_ch_n_ampl_v(1:floor(length(u_ch)/2)));
 hold on;
-semilogx(Sys_Gg_z_w, Sys_Gg_z_ampl);
+semilogx(Sys_z_w, Sys_z_ampl);
 grid on;
 title('Amplitudengang mit Rauschen');
 ylabel('Amplitude [dB]');
@@ -159,7 +142,7 @@ semilogx(w_ch, G_ch_n_phase(1:floor(length(u_ch)/2)));
 hold on;
 semilogx(w_ch, G_ch_n_phase_v(1:floor(length(u_ch)/2)));
 hold on;
-semilogx(Sys_Gg_z_w, Sys_Gg_z_phase);
+semilogx(Sys_z_w, Sys_z_phase);
 hold off;
 grid on;
 title('Frequenzgang mit Rauschen');

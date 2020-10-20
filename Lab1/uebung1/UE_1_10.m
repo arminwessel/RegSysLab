@@ -115,10 +115,10 @@ u_chirp_fft = fft(u_chirp, N_chirp);
 y_chirp_kr_fft = fft(y_chirp_kr.signals.values,N_chirp);
 y_chirp_mr_fft = fft(y_chirp_mr.signals.values,N_chirp);
 
-G_chirp_kr_ampl = 20*log10(abs(y_chirp_kr_fft)./abs(u_chirp_fft));
-G_chirp_kr_phase = unwrap(angle(y_chirp_kr_fft) - angle(u_chirp_fft))*180/pi;
-G_chirp_mr_ampl = 20*log10(abs(y_chirp_mr_fft)./abs(u_chirp_fft));
-G_chirp_mr_phase = unwrap(angle(y_chirp_mr_fft) - angle(u_chirp_fft))*180/pi;
+G_chirp_kr_ampl = 20*log10(abs(y_chirp_kr_fft)./abs(u_chirp_fft'));
+G_chirp_kr_phase = unwrap(angle(y_chirp_kr_fft) - angle(u_chirp_fft'))*180/pi;
+G_chirp_mr_ampl = 20*log10(abs(y_chirp_mr_fft)./abs(u_chirp_fft'));
+G_chirp_mr_phase = unwrap(angle(y_chirp_mr_fft) - angle(u_chirp_fft'))*180/pi;
 
 % Signale mit Vorfilter:
 
@@ -144,7 +144,7 @@ semilogx(w_chirp, G_chirp_kr_ampl(1:floor(N_chirp/2)));
 hold on;
 semilogx(w_chirp, G_chirp_kr_ampl_v(1:floor(N_chirp/2)));
 hold on;
-%semilogx(Gg_z_w, Gg_z_ampl);
+semilogx(Gg_z_w, Gg_z_ampl);
 grid on;
 title('Amplitudengang ohne Vorfilter, ohne Rauschen');
 ylabel('Amplitude [dB]');
