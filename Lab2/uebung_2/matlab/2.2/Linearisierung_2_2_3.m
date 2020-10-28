@@ -2,13 +2,13 @@
 % Ruhelage auswählen:
 % untere_ruhelage = 1 -> untere Ruhelage
 % untere_ruhelage = 0 -> obere Ruhelage
-untere_ruhelage = 1;
-Parameter_Liste;
+obere_untere_Ruhelage = 1;
+Parameter;
 [sysk_uR,sysd_uR] = DP_System(parDP);
 
 % obere Ruhelage
-untere_ruhelage = 0;
-Parameter_Liste;
+obere_untere_Ruhelage = 0;
+Parameter;
 [sysk_oR,sysd_oR] = DP_System(parDP);
 
 
