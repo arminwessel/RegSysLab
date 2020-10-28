@@ -21,12 +21,15 @@ zero_oR=zero(sysk_oR)
 
 
 %% Erreichbarkeit (Controllability)
-Sysdim = size(sysd_uR,'order');
 
+Sysdim = size(sysk_uR,'order');
 Sysdim - rank(ctrb(sysk_uR))
+Sysdim = size(sysd_uR,'order');
 Sysdim - rank(ctrb(sysd_uR))
 
+Sysdim = size(sysk_oR,'order');
 Sysdim - rank(ctrb(sysk_oR))
+Sysdim = size(sysd_oR,'order');
 Sysdim - rank(ctrb(sysd_oR))
 
 % alle Systeme sind vollständig Ereichbar!

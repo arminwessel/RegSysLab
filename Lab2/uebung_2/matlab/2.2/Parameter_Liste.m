@@ -14,7 +14,8 @@ parDP.d2=0.0003; %Daempfungskonstante aeußeres Pendel
 parDP.m=0.2;     %Masse Wagen [m]
 parDP.g=9.81;   %Gravitationskonstante
 
-parDP.sysdim = 0
+parDP.Ta=0.001
+
 %% Ruhlagen
     
 if untere_ruhelage==0
