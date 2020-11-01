@@ -10,7 +10,7 @@ obere_untere_Ruhelage = 1;
 % Anfangsfehler
 parDP.phi10_error = 0.1;
 % Quantisierung ein/aus (1-0)
-Quantisierung = 0;
+Quantisierung = 1;
 
 
 %Parameter laden
@@ -28,7 +28,7 @@ run Tuning_Parameter
 %LQR-Entwurf
 [parLQR] = LQR_Entwurf(sysd,parLQR);
 
-if(0)
+if(1)
     disp('Simulations läuft...')
     open('Doppelpendel_LQR.slx')
     sim('Doppelpendel_LQR.slx')
