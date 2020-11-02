@@ -1,31 +1,23 @@
 function [ ] = Vorsteuerung_Plotten( parFF )
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Labor Regelungssysteme 1, WS 16/17
-%
-% Funktion Vorsteuerung_Plotten
-% Eingang:
-%     parFF       Parameterstruktur
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Schlittenversatz
 s0 = 0;
 sT = 0.5;
-Te = 3; % Übergangszeit 3s
+Te = 3; % Ãœbergangszeit 3s
 
 x0 = zeros(6,1);
 x0(5) = s0;
 xT = zeros(6,1);
 xT(5) = sT;
 
-z0 = parFF.VV*x0;
-zT = parFF.VV*xT;
+VV=inv(parFF.VVinv)
+z0 = VV*x0;
+zT = VV*xT;
 
 z0 = z0(1);
 zT = zT(1);
 
-% Berechnete Koeffizienten der Solltrajektorie:
+% Berechnete Koeffizienten der Solltrajektorie aus Maple:
 
 t = 0:0.01:Te;
 

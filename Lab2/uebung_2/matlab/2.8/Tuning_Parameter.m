@@ -6,14 +6,12 @@ warning('Labor Regelungssysteme 1 WS2020, Gruppe 10');
 %% Gewichtung Regler
 parLQR.Ta = parDP.Ta;
 parKAL.Ta = parDP.Ta;
-%%%%%%%%%%%%
 a1 = 0.1;
 a2 = 0.1;
 a3 = 0.1;
 a4 = 0.1;
 a5 = 0.1;
 g = 20;
-%%%%%%%%%%%%
 
 if obere_untere_Ruhelage==1 %obere
     

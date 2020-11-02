@@ -10,7 +10,7 @@ obere_untere_Ruhelage = 1;
 % Anfangsfehler
 parDP.phi10_error = 0.1;
 % Quantisierung ein/aus (1-0)
-Quantisierung = 1;
+Quantisierung = 0;
 
 
 %Parameter laden
