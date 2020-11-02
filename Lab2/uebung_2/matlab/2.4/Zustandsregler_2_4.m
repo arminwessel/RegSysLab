@@ -9,4 +9,4 @@ run LoadParameter
 % Die Umrechnung der Zustandsgrößen des linearisierten Modells wurden im
 % Submodul Ruhelage+Quantisierung implementiert -> delta x =  x -xR
 
-% Punkz 2
+% Punkt 2

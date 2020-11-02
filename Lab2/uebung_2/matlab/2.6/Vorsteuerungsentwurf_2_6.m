@@ -11,7 +11,7 @@ parDP.phi10_error = 0*0.1;
 %Parameter laden
 run Parameter
 
-%% 2.6.1 Vorsteuerung_Entwurf aufrufen
+%% 2.6.1 Vorsteuerung_Entwurf Aufruf
 
 [sysk, sysd] = DP_System( parDP );
 
@@ -26,4 +26,10 @@ aa = parFF.aa
 VVinv = parFF.VVinv
 VV = transpose(VVinv)
 A_schlange = VV*sysk.A*VVinv
-b_schlange = VV*sysk.b
+b_schlange = VV*sysk.b% Obere oder untere Ruhelage (1-0)
+obere_untere_Ruhelage = 0;
+% Anfangsfehler
+parDP.phi10_error = 0*0.1;
+
+%Parameter laden
+run Parameter

@@ -27,7 +27,8 @@ Nullstellen=zero(sysk)
 run Tuning_Parameter
 %LQR-Entwurf
 [parLQR] = LQR_Entwurf(sysd,parLQR);
-
+parLQR.kx
+parLQR.kI
 if(1)
     disp('Simulations läuft...')
     open('Doppelpendel_LQR.slx')

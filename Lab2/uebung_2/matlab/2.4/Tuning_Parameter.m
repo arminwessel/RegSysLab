@@ -1,22 +1,31 @@
+%% --- fill in the number of your group ---
+warning('Labor Regelungssysteme 1 WS2020, Gruppe 10');
+
+%% --- do not change the variable names below! ---
+
 %% Gewichtung Regler
-parLQR.Ta = 0.1;
+parLQR.Ta = parDP.Ta;
+parKAL.Ta = parDP.Ta;
+a1 = 0.1;
+a2 = 0.1;
+a3 = 0.1;
+a4 = 0.1;
+a5 = 0.1;
+g = 20;
 
-% Konstanten für Gewichtungsmatrix Q
-% hohes alpha bewirkt
-% *schnelles Abklingen dieses Zustandes gegen Null
-% *stärkere Sichtbarkeit des Quantisierungsrauschens am Ausgang
-alpha1 = 0.1;   % für phi (1,2)
-alpha2 = 0.1;   % für omega (1,2)
-alpha3 = 0.1;   % für s
-alpha4 = 0.1;   % für sp = w
-alpha5 = 0.1;   % für spp = u
-
-% Konstante für Gewichtungsmatrix R
-% je größer gamma, desto kleiner wird die erforderliche Stellgröße
-gamma = 20; 
-
+if obere_untere_Ruhelage==1 %obere
+    
     %LQR-Gewichtung disk
-    parLQR.Q = diag([alpha1 alpha2 alpha1 alpha2 alpha3 alpha4 alpha5]);
-    parLQR.R = gamma;
-    parLQR.N = zeros(7,1);
+    parLQR.Q = diag([a1, a2, a1, a2, a3, a4, a5]);
+    parLQR.R = g; 
+    parLQR.N = 0;
+
+else %untere
+     
+    %LQR-Gewichtung disk
+    parLQR.Q = diag([a1, a2, a1, a2, a3, a4, a5]);
+    parLQR.R = g;
+    parLQR.N = 0;
+               
+end
 
