@@ -28,7 +28,7 @@ run Tuning_Parameter
 [sysk, sysd] = DP_System(parDP);
 
 % Vorsteuerung
-parFF.aa = 0;
+ parFF.aa = 0;
 [ parFF ] = Vorsteuerung_Entwurf( sysk, parFF );
 
 % Erweiterung des Pendelmodells um einen Integratoranteil
