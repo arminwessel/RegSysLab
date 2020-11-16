@@ -1,0 +1,9 @@
+1. Regler kann nun dem Sinussignal folgen (mittlere Spalte)
+
+2. Anfangswertabweichung 
+    
+    TODO:
+
+3. Sprunghafte Störung kann nicht ausgeregelt werden -> bleibende Regelabweichung nach Aufschaltung
+
+4. 
