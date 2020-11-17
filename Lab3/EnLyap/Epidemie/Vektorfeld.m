@@ -26,7 +26,7 @@ parSys.k1 = 10;
 
 [X,Y] = meshgrid(0:0.03:1,0:0.03:1);
 
-if (0)
+if (1)
     figure(1)
     U = beta*X.*(1-X-Y)-gamma*X;
     V = gamma*X-delta.*Y;
