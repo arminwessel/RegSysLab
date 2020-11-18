@@ -18,15 +18,24 @@ parSys.delta=delta;
 parSys.i_0=i_0;
 parSys.r_0=r_0;
 
-% Regler
-parSys.k1 = 10;
+% Reglerparameter für freie Stellgröße 
+parSys.c1 = 1;
+parSys.c2 = 0.1;
+parSys.c = 1000;
+
+% Reglerparameter für beschränkte Stellgröße
+% Mit Vorsteuerung kann man den Regler optimieren
+% parSys.c1 = 10;
+% parSys.c2 = 0.01;
+% parSys.c = 1000;
+
 
 %% Plot
 % 3.3.1 
 
 [X,Y] = meshgrid(0:0.03:1,0:0.03:1);
 
-if (1)
+if (0)
     figure(1)
     U = beta*X.*(1-X-Y)-gamma*X;
     V = gamma*X-delta.*Y;
