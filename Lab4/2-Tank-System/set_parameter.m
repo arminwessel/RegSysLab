@@ -35,10 +35,14 @@ parSys.hmax      = 0.55;          % Maximale Fuellhoehe
 % Abtastzeit
 parSys.Ta = 0.2;                
 
-% Anfangsbedingung
+% Anfangsbedingung (original)
 parSys.h1_0 = 0.30;
 parSys.h2_0 = 0.10;
 parSys.h3_0 = 0.05;
+
+% Anfangbedingungen -> berechnete Ruhelage
+parSys.h1_0 = 0.1801527441;
+parSys.u_0 = 0.00003454692613;
 
 % Maximale Zufluesse
 parSys.qZ1max = 4.5e-3/60;        % Maximaler Zufluss Z1
