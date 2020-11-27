@@ -2,11 +2,21 @@ run set_parameter
 
 %% Aufgabe 4.4 - Sollwertfilter
 parSys.deltah2 = 0.1;
-Stellgroessebesch = 0;
+Stellgroessebesch = 1;
 if Stellgroessebesch == 0
     p = -1;
 else
-    p=-2.2e-2;
+    p=-2.3e-2;
+    % ohne Stabilisierung
+    % für p=-2.3e-2 kommt man fast genau auf die 4,5 l/min bei dem
+    % Arbeitspunkt von h20=0.1 um deltah20=0.1 (ohne Stabilisierung)
+    % weiteres erhöhen verletzt die Stellgrößenbeschänkung
+    % bei 2e-2 kommt man auf ca. 4 l/min bei dem
+    % Arbeitspunkt von h20=0.1 um deltah20=0.1
+    
+    % mit Stabilisierung
+    % Pole des Fehlersystems bei p = -0.5e-1 kommt man genau auf die 
+    % 4,5 l/min
 end
 a = poly([p p p]); 
 % Filterkoeffizienten a1 * x^3 + a2 * x^2 + a3 * x + a4

@@ -1,18 +1,19 @@
 run A4_4
 
-%% A4.5 Relger
+%% A4.5 Relger mit Polvorgabe
 parSys.deltah12 = 0.1e-3;
-mitStabilisierung = 0;
+mitStabilisierung = 1;
+
 if mitStabilisierung ==0
-% ohne Stabilisierung
-parSys.a0 = 0;
-parSys.a1 = 0;
+    % ohne Stabilisierung
+    parSys.a0 = 0;
+    parSys.a1 = 0;
 else   
- % mit Stabilisierung
- p = -1e-1;
- a = poly([p p]);
- parSys.a0 = a(3);
- parSys.a1 = a(2);
+    % mit Stabilisierung
+    p = -0.5e-1;
+    a = poly([p p]);
+    parSys.a0 = a(3);
+    parSys.a1 = a(2);
 end
 
 %% Approximation
