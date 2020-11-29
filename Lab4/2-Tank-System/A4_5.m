@@ -49,15 +49,29 @@ delta_h1 = [-0.2:0.01:-0.0001,-0.0001,0.0001:0.01:0.2];
 dq12_ddelta_h = 0.2e1 * alpha120 * Dh12 * rho / eta * g / lambdac12 * (0.1e1 - tanh(0.2e1 * Dh12 * rho / eta * sqrt(0.2e1) * sqrt(g) * sqrt(abs(delta_h1)) / lambdac12) .^ 2) * A12 + alpha120 * tanh(0.2e1 * Dh12 * rho / eta * sqrt(0.2e1) * sqrt(g) * sqrt(abs(delta_h1)) / lambdac12) * A12 * sqrt(0.2e1) * sqrt(g) .* abs(delta_h1) .^ (-0.1e1 / 0.2e1) / 0.2e1;
 
 %% Plot
-figure()
-subplot(2,1,1);
-plot(delta_h,dq12dh1);
+FigH=figure(1)
+
+P1=subplot(2,1,1);
+plot(delta_h,dq12dh1); % Verlauf
 hold on;
-plot(delta_h1,dq12_ddelta_h);
-title('h1')
+plot(delta_h1,dq12_ddelta_h); % approx. Gerade
+title('')
 grid minor;
+
 subplot(2,1,2);
 plot(delta_h,dq12dh2);
 hold on;
 plot(delta_h1,-dq12_ddelta_h);
 grid minor;
+
+AxesH    = findobj(FigH, 'Type', 'Axes');
+% YLabelHC = get(AxesH, 'YLabel');
+% YLabelH  = [YLabelHC{1}];
+% set(YLabelH, 'String', 'dq12 / dh2')
+% YLabelH  = [YLabelHC{2}];
+% set(YLabelH, 'String', 'dq12 / dh1')
+TitleHC  = get(AxesH, 'Title');
+TitleH   = [TitleHC{1}];
+set(TitleH, 'String', 'dq12 / dh2');
+TitleH   = [TitleHC{2}];
+set(TitleH, 'String', 'dq12 / dh1');

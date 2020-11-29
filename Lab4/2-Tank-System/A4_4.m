@@ -6,7 +6,7 @@ Stellgroessebesch = 1;
 if Stellgroessebesch == 0
     p = -1;
 else
-    p=-2.3e-2;
+    p=-2.2e-2;
     % ohne Stabilisierung
     % für p=-2.3e-2 kommt man fast genau auf die 4,5 l/min bei dem
     % Arbeitspunkt von h20=0.1 um deltah20=0.1 (ohne Stabilisierung)
