@@ -32,13 +32,19 @@ parSys.lambdac23 = 29600;         % Kritische Fliesszahl ZV23
 parSys.hmin      = 0.05;          % Minimale Fuellhoehe
 parSys.hmax      = 0.55;          % Maximale Fuellhoehe
 
+
 % Abtastzeit
 parSys.Ta = 0.2;                
 
-% Anfangsbedingung
-parSys.h1_0 = 0.30;
-parSys.h2_0 = 0.10;
-parSys.h3_0 = 0.05;
+% Anfangsbedingung original
+% parSys.h1_0 = 0.30;
+% parSys.h2_0 = 0.10;
+% parSys.h3_0 = 0.05;
+
+% Anfangsbedingungen für Ruhelage aus Aufgabe 4.10
+parSys.h1_0 = 0.22; % laut angabe
+parSys.h2_0 = 0.156472; % Aus Maple
+parSys.h3_0 = 0.17; % laut angabe
 
 % Maximale Zufluesse
 parSys.qZ1max = 4.5e-3/60;        % Maximaler Zufluss Z1
