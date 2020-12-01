@@ -4,9 +4,11 @@ run set_parameter
 parSys.deltah2 = 0.1;
 Stellgroessebesch = 1;
 if Stellgroessebesch == 0
-    p = -1;
+    p= -1;
+    %p = -5e-2;
 else
-    p=-2.2e-2;
+    p=-2.1e-2;
+    p=-0.1;
     % ohne Stabilisierung
     % für p=-2.3e-2 kommt man fast genau auf die 4,5 l/min bei dem
     % Arbeitspunkt von h20=0.1 um deltah20=0.1 (ohne Stabilisierung)
@@ -17,6 +19,11 @@ else
     % mit Stabilisierung
     % Pole des Fehlersystems bei p = -0.5e-1 kommt man genau auf die 
     % 4,5 l/min
+    
+    % Aufgabe 4.7
+    % p=-2.1e-2 
+
+    
 end
 a = poly([p p p]); 
 % Filterkoeffizienten a1 * x^3 + a2 * x^2 + a3 * x + a4

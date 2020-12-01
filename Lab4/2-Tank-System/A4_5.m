@@ -4,7 +4,7 @@ run A4_4
 parSys.deltah12 = 0.1e-3;
 mitStabilisierung = 0;
 
-if mitStabilisierung ==1
+if mitStabilisierung ==0
     % ohne Stabilisierung
     parSys.a0 = 0;
     parSys.a1 = 0;
