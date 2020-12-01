@@ -2,22 +2,19 @@ run set_parameter
 % Aufgabe 4.4 Sollwertfilter
 %parSys.deltah2 = 0.1;
 % Pollage
-Zuflussbegrenzung = 0;
+% Zuflussbegrenzung = 0;
 
 mitStabilisierung = 1;
 
+
+
 if Zuflussbegrenzung == 1
-    p1 = -38e-3;
-    p2 = -38e-3;
-    pR = -5e-4;
-    % p1 = -38e-3; sorgt bei dem Arbeitspunktwechsel dafür dass der Zufluss
-    % qz1 knapp unter 4.5 l/min bleibt während der qz3 bei ca. 2.4 l/min
-    % ist
-    % Für pR = -5e-4 bei den Polen des Reglers garantiert für qz1 wieder
-    % knapp 4.5 l/min
+    p1 = -0.014
+    p2 = -0.014
+    pR = -0.4;
 else
-    p1 = -38e-3;
-    p2 = -38e-3;
+    p1 = -0.014
+    p2 = -0.014
     pR = -0.4;
     
 end
@@ -75,7 +72,7 @@ if mitStabilisierung ==1
     parInit.y1a0 = a2Reglery1(3);
     parInit.y1a1 = a2Reglery1(2);
     
-    %integral Teil für Aufgabe 4.10 noch nicht dabei
+    %integral Teil für Aufgabe 4.10 noch nicht dabei --> Null setzen
     parInit.y1aI = 0;
     parInit.y2aI = 0;
 else
@@ -85,4 +82,6 @@ else
     parInit.y1aI=0;
     parInit.y2aI=0;
 end
+
+
 

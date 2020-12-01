@@ -7,9 +7,9 @@
 % --------------------------------------
 %
 
-clc
-close all;
-clear;
+%clc
+%close all;
+%clear;
 
 % Parameter des Systems
 parSys.Atank     = 1.539e-2;      % Grundfläche Tank
