@@ -2,9 +2,9 @@ run set_parameter
 % Aufgabe 4.4 Sollwertfilter
 %parSys.deltah2 = 0.1;
 % Pollage
-Zuflussbegrenzung = 1;
+Zuflussbegrenzung = 0;
 
-regler_on = 1;
+mitStabilisierung = 1;
 
 if Zuflussbegrenzung == 1
     p1 = -38e-3;
@@ -68,7 +68,7 @@ end
 
 %% Regelparameter
 
-if regler_on ==1 
+if mitStabilisierung ==1 
     a2Reglery2 = poly([pR]);
     parInit.y2a0 = a2Reglery2(2);
     a2Reglery1 = poly([pR, pR]);

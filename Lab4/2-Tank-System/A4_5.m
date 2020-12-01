@@ -2,9 +2,9 @@ run A4_4
 
 %% A4.5 Relger mit Polvorgabe
 parSys.deltah12 = 0.1e-3;
-mitStabilisierung = 1;
+mitStabilisierung = 0;
 
-if mitStabilisierung ==0
+if mitStabilisierung ==1
     % ohne Stabilisierung
     parSys.a0 = 0;
     parSys.a1 = 0;
