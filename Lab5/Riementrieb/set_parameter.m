@@ -63,5 +63,57 @@ parReg.CCSFi = eye(2);
 parReg.DDSFi = zeros(2,1);
 parReg.ssSFi = ss(parReg.AASFi,parReg.BBSFi,parReg.CCSFi,parReg.DDSFi);
 
+%% Regler
+% Parameter
+Il = parSys.Il;
+cr1= parSys.cr1;
+cr3= parSys.cr3;
+dl = parSys.dl;
+rl = parSys.rl;
+I_m = parSys.Im;
+dm = parSys.dm;
+rm = parSys.rm;
+Rm = parSys.Rm;
+Lm = parSys.Lm;
+p  = parSys.p;
+Phi= parSys.Phi;
 
-           
+% Frei vorgebbar: omega_m_d,  i_d_d
+wmd = 0;
+idd = 0;
+
+% Zu berechnen i_q_d,   omega_l_d,   epsilon_d (implizit)
+iqd = 0.2e1 / 0.3e1 * wmd * (dl * rm ^ 2 + dm * rl ^ 2) / Phi / p / rl ^ 2;
+wld = rm * wmd / rl;
+% 
+syms cg;
+assume(cg,'real')
+epsd_fun = @(cg)(2 * cr3 * rl ^ 2 * cg ^ 3 + 2 * cr1 * rl ^ 2 * cg + dl * rm * wmd);
+epsd = fzero(epsd_fun,0);
+
+
+% Matrizen
+A = [-dm / I_m 0.3e1 / 0.2e1 * p * Phi / I_m 0 0.2e1 * (3 * cr3 * epsd ^ 2 + cr1) * rm / I_m 0; p * ((3 * Lm * idd) - 0.2e1 * Phi) / Lm / 0.3e1 -0.2e1 / 0.3e1 * Rm / Lm wmd * p 0 0; -iqd * p -wmd * p -0.2e1 / 0.3e1 * Rm / Lm 0 0; -rm 0 0 0 rl; 0 0 0 -2 * rl * (3 * cr3 * epsd ^ 2 + cr1) / Il -dl / Il;];
+B = [0 0; 0.2e1 / 0.3e1 / Lm 0; 0 0.2e1 / 0.3e1 / Lm; 0 0; 0 0;];
+C = [1 0 0 0 0; 0 0 1 0 0;];
+D = 0;
+
+% System
+Ta = 0.1e-3; % 0.1 ms
+sysc = ss(A,B,C,0);
+sysd = c2d(sysc,Ta,'zoh');          
+Gz = tf(sysd);
+display(Gz);
+% figure()
+% pzmap(Gz);
+% grid minor;
+
+% Reglerparameter
+parSys.Ta=Ta;
+% für Ausgang uq
+parSys.kp_uq = 2;
+parSys.kI_uq = 10;
+
+% für Ausgang uq
+parSys.kp_ud = 40;
+parSys.kI_ud = 100;
