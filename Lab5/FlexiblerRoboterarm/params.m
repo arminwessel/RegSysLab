@@ -32,3 +32,7 @@ param_system_altered2=[c*0.6,d__1,d__2,m,g,l,I__1,I__2];
 %   Start bei stab. Ruhelage phi__2=-pi/2
 %   Ende bei instab. Ruhelage phi__2=pi/2
 param_trajectory=[10,-pi/2,pi/2];
+
+%% P-Regler Parameter
+
+parReg.k=-0.1;
