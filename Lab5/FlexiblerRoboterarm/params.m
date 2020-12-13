@@ -34,5 +34,6 @@ param_system_altered2=[c*0.6,d__1,d__2,m,g,l,I__1,I__2];
 param_trajectory=[10,-pi/2,pi/2];
 
 %% P-Regler Parameter
-
-parReg.k=-0.1;
+% k=-0.1*180/pi;
+% nach rlocus stabil für k in [4.91,10.8]
+parReg.k=5;
